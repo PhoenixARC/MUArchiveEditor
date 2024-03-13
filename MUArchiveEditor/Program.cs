@@ -22,7 +22,8 @@ namespace MinecraftUArchiveExplorer
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            if(Args.Length < 1)
+            Application.EnableVisualStyles();
+            if (Args.Length < 1)
                 Application.Run(new FormMain());
             else
                 Application.Run(new FormMain(Args[0]));

@@ -83,6 +83,16 @@ namespace MinecraftUArchiveExplorer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cycle {
+            get {
+                object obj = ResourceManager.GetObject("Cycle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Del {
             get {
                 object obj = ResourceManager.GetObject("Del", resourceCulture);
@@ -111,22 +121,22 @@ namespace MinecraftUArchiveExplorer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to achievement.openInventory=F28AC13D
-        ///achievement.mineWood=2BA9A566
-        ///achievement.buildWorkBench=D5D0CEEF
-        ///achievement.buildHoe=CBF9C690
-        ///achievement.makeBread=AAF2C159
+        ///   Looks up a localized string similar to achievement.acquireIron=36F66718
         ///achievement.bakeCake=D40E6602
-        ///achievement.buildSword=AAFFE10B
-        ///achievement.killEnemy=75094A9C
-        ///achievement.killCow=088994E5
-        ///achievement.flyPig=9A5947C5
-        ///achievement.buildPickaxe=77E6DD7C
+        ///achievement.blaze_rod=AB890FF2
+        ///achievement.bookcase=4C6C4BA7
+        ///achievement.bookcase=8007817D
+        ///achievement.breedCow=E8BB9AB5
         ///achievement.buildBetterPickaxe=177692F7
         ///achievement.buildFurnace=1F3264AE
+        ///achievement.buildHoe=CBF9C690
+        ///achievement.buildPickaxe=77E6DD7C
+        ///achievement.buildSword=AAFFE10B
+        ///achievement.buildWorkBench=D5D0CEEF
         ///achievement.cookFish=6C76F061
-        ///achievement.acquireIron=36F66718
-        ///achievement.on [rest of string was truncated]&quot;;.
+        ///achievement.diamonds=491119A4
+        ///achievement.diamondsToYou=80AB4F2C
+        ///achievement. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Language_ID_map {
             get {
@@ -170,6 +180,16 @@ namespace MinecraftUArchiveExplorer.Properties {
         internal static System.Drawing.Bitmap Replace {
             get {
                 object obj = ResourceManager.GetObject("Replace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Spark_1 {
+            get {
+                object obj = ResourceManager.GetObject("Spark-1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

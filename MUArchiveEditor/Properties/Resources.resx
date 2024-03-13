@@ -121,17 +121,26 @@
   <data name="AddFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AddFile1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddFile1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Del" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Del.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZZFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZZFolder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ExportFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ExportFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IMAGE_ICON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGE ICON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AddFile1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddFile1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Replace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Replace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cycle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cycle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZCol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZCol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Language_ID_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Language_ID_map.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -139,25 +148,22 @@
   <data name="LOC_ICON" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LOC ICON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mobs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mobs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rename" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rename.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Replace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Replace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ZCol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ZCol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ZFui" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ZFui.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IMAGE_ICON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IMAGE ICON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ZUnknown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZUnknown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ZZFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ZZFolder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mobs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mobs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZFui" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZFui.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rename" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rename.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Spark-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Spark-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

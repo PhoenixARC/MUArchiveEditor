@@ -46,6 +46,9 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\##OMI Filetype Library\OMI Filetypes Library\bin\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="ListViewPrinter, Version=2.7.1.31255, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.2.7.1.5\lib\ListViewPrinter.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
       <Private>True</Private>
@@ -54,14 +57,24 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ObjectListView, Version=2.7.1.31255, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.2.7.1.5\lib\ObjectListView.dll</HintPath>
+    </Reference>
     <Reference Include="OMI Filetypes">
-      <HintPath>..\..\##OMI Filetype Library\OMI Filetypes Library\bin\Release\OMI Filetypes.dll</HintPath>
+      <HintPath>..\..\##OMI Filetype Library\-OMI-Filetype-Library\OMI Filetypes Library\bin\Debug\OMI Filetypes.dll</HintPath>
+    </Reference>
+    <Reference Include="SparkleLibrary, Version=2.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.2.7.1.5\lib\SparkleLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\##OMI Filetype Library\-OMI-Filetype-Library\OMI Filetypes Library\bin\Debug\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -119,6 +132,10 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\##OMI Filetype Library\-OMI-Filetype-Library\OMI Filetypes Library\bin\Debug\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
       <Private>True</Private>
@@ -130,6 +147,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\##OMI Filetype Library\-OMI-Filetype-Library\OMI Filetypes Library\bin\Debug\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
       <Private>True</Private>
@@ -139,6 +160,10 @@
       <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\##OMI Filetype Library\-OMI-Filetype-Library\OMI Filetypes Library\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
@@ -180,6 +205,10 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\##OMI Filetype Library\-OMI-Filetype-Library\OMI Filetypes Library\bin\Debug\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -198,6 +227,12 @@
     <Compile Include="Classes\Archive\ArchiveActions.cs" />
     <Compile Include="Classes\ArraySupport.cs" />
     <Compile Include="Classes\Networking\API.cs" />
+    <Compile Include="Classes\ToolboxItems\EXComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\ToolboxItems\EXListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\ToolboxItems\InterpolationPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -212,6 +247,12 @@
     </Compile>
     <Compile Include="Forms\AddFile.Designer.cs">
       <DependentUpon>AddFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdditionalPopups\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdditionalPopups\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdditionalPopups\AddLanguage.cs">
       <SubType>Form</SubType>
@@ -230,6 +271,18 @@
     </Compile>
     <Compile Include="Forms\ArcCenter.Designer.cs">
       <DependentUpon>ArcCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor\LOCEditMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor\LOCEditMessage.Designer.cs">
+      <DependentUpon>LOCEditMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor\COLEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor\COLEditor.Designer.cs">
+      <DependentUpon>COLEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Editor\LOCEditor.cs">
       <SubType>Form</SubType>
@@ -251,6 +304,9 @@
     <EmbeddedResource Include="Forms\AddFile.resx">
       <DependentUpon>AddFile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdditionalPopups\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdditionalPopups\AddLanguage.resx">
       <DependentUpon>AddLanguage.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +315,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ArcCenter.resx">
       <DependentUpon>ArcCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor\LOCEditMessage.resx">
+      <DependentUpon>LOCEditMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor\COLEditor.resx">
+      <DependentUpon>COLEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editor\LOCEditor.resx">
       <DependentUpon>LOCEditor.cs</DependentUpon>
@@ -333,6 +395,8 @@
     <None Include="Resources\Language_ID_map.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Cycle.png" />
+    <None Include="Spark-1.png" />
     <Content Include="Spark.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

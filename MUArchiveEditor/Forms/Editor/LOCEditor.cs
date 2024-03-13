@@ -10,32 +10,40 @@ using OMI.Workers.Language;
 using OMI.Formats.Pck;
 using OMI.Formats.Archive;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace MinecraftUArchiveExplorer.Forms.Editor
 {
-    public partial class LOCEditor : Form
+	public partial class LOCEditor : Form
 	{
-		DataTable tbl;
+		public LOCFile _loc { get; set; }
+		public LOCFile currentloc { get; set; }
+
 		int LOCType = 0;
-		LOCFile currentLoc;
 		ConsoleArchive _arc;
-		Dictionary<string, string> languageMap_id = new Dictionary<string, string>();
-		Dictionary<string, string> languageMap_text = new Dictionary<string, string>();
 		string FileName;
 		byte[] _file;
 
-		public LOCEditor(ConsoleArchive _archive, string path)
+		DataTable Table = new DataTable();
+
+		
+
+		Dictionary<string, string> languageMap_id = new Dictionary<string, string>();
+		Dictionary<string, string> languageMap_text = new Dictionary<string, string>();
+		Dictionary<string, string> languageMap = new Dictionary<string, string>();
+
+		public LOCEditor()
 		{
 			InitializeComponent();
-			FileName = path;
-			_file = _archive[path];
-			using (var ms = new MemoryStream(_file))
-			{
-				var reader = new LOCFileReader();
-				currentLoc = reader.FromStream(ms);
-			}
 
-			foreach (string line in Properties.Resources.Language_ID_map.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
+			currentloc = _loc;
+
+
+			Table.Columns.Add("ID");
+			Table.Columns.Add("Label");
+			Table.Columns.Add("Text");
+
+            foreach (string line in Properties.Resources.Language_ID_map.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
 			{
 				string[] parts = line.Split('=');
 				if (!languageMap_text.ContainsKey(parts[0]) && !languageMap_id.ContainsKey(parts[1]))
@@ -44,18 +52,11 @@ namespace MinecraftUArchiveExplorer.Forms.Editor
 					languageMap_text.Add(parts[0], parts[1]);
 				}
 			}
-			tbl = new DataTable();
-			tbl.Columns.Add(new DataColumn("Language") { ReadOnly = true });
-			tbl.Columns.Add("Display Name");
-			dataGridViewLocEntryData.DataSource = tbl;
-			DataGridViewColumn column = dataGridViewLocEntryData.Columns[1];
-			column.Width = dataGridViewLocEntryData.Width;
 		}
 
 		private void LOCEditor_Load(object sender, EventArgs e)
 		{
-			Dictionary<string, string> languageMap = new Dictionary<string, string>();
-			foreach (string locKey in currentLoc.LocKeys.Keys)
+			foreach (string locKey in _loc.LocKeys.Keys)
 			{
 
 				string ID = "";
@@ -65,143 +66,172 @@ namespace MinecraftUArchiveExplorer.Forms.Editor
 				{
 					ID = locKey;
 
-					string LocValue = currentLoc.LocKeys[locKey]["en-EN"].Replace("\n", "\\n").Replace("\r", "\\r").ToLower();
-					if(!languageMap.ContainsKey(LocValue))
+					string LocValue = _loc.LocKeys[locKey]["en-EN"].Replace("\n", "\\n").Replace("\r", "\\r").ToLower();
+					if (!languageMap.ContainsKey(LocValue))
 						languageMap.Add(LocValue, locKey);
 				}
 
-				treeViewLocKeys.Nodes.Add(ID);
 			}
 
-			Dictionary<string, string> languageMap2 = new Dictionary<string, string>();
-			Dictionary<string, string> BedrockIn = new Dictionary<string, string>();
-			Dictionary<string, string> JavaIn = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText("en_us.json")) ;
-			string FileIn = File.ReadAllText("en_US.lang");
-			foreach (KeyValuePair<string, string> kvp in JavaIn)
+			foreach (string lang in _loc.Languages)
 			{
-                if (languageMap.ContainsKey(kvp.Value.ToLower()) && !languageMap2.ContainsKey(languageMap[kvp.Value.ToLower()]))
-                {
-					//languageMap2.Add(languageMap[kvp.Value.ToLower()], kvp.Key);
-
-				}
+				comboBox1.Items.Add(lang);
 			}
 
-			foreach (string line in FileIn.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
-			{
-				string[] parts = line.Split('=');
-				if (parts.Length >= 2 && languageMap.ContainsKey(parts[1].ToLower()) && !languageMap2.ContainsKey(languageMap[parts[1].ToLower()]))
-				{
-					languageMap2.Add(languageMap[parts[1].ToLower()], parts[0]);
-
-				}
-			}
-
-			StreamWriter sw = new StreamWriter("WoW.txt");
-			foreach(KeyValuePair<string, string> kvp in languageMap2)
-            {
-				sw.WriteLine(kvp.Value + "=" + kvp.Key);
-            }
-			sw.Close();
-			
 		}
 
-		private void treeViewLocKeys_AfterSelect(object sender, TreeViewEventArgs e)
-		{
-			var node = e.Node;
-			string ID = "";
-			if (languageMap_text.ContainsKey(node.Text))
-				ID = languageMap_text[node.Text];
-			else
-				ID = node.Text;
-
-			if (node == null ||
-				!currentLoc.LocKeys.ContainsKey(ID))
-			{
-				MessageBox.Show("Selected Node does not seem to be in the loc file");
-				return;
-			}
-			ReloadTranslationTable(ID);
-		}
-
-		private void addDisplayIDToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-		}
-
-		private void deleteDisplayIDToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-		}
-
-		private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-		{
-			string ID = "";
-			if (languageMap_text.ContainsKey(treeViewLocKeys.SelectedNode.Text))
-				ID = languageMap_text[treeViewLocKeys.SelectedNode.Text];
-			else
-				ID = treeViewLocKeys.SelectedNode.Text;
-			if (e.ColumnIndex != 1 ||
-				treeViewLocKeys.SelectedNode == null)
-			{
-				MessageBox.Show("something went wrong");
-				return;
-			}
-			currentLoc.SetLocEntry(ID, tbl.Rows[e.RowIndex][0].ToString(), tbl.Rows[e.RowIndex][1].ToString());
-		}
-
-		private void treeView1_KeyDown(object sender, KeyEventArgs e)
-		{
-		}
-
-		private void buttonReplaceAll_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < tbl.Rows.Count; i++)
-			{
-				tbl.Rows[i][1] = textBoxReplaceAll.Text;
-			}
-
-			currentLoc.SetLocEntry(treeViewLocKeys.SelectedNode.Text, textBoxReplaceAll.Text);
-		}
-
-		private void LOCEditor_Resize(object sender, EventArgs e)
-		{
-			DataGridViewColumn column = dataGridViewLocEntryData.Columns[1];
-			column.Width = dataGridViewLocEntryData.Width - dataGridViewLocEntryData.Columns[0].Width;
-		}
-
-		private void ReloadTranslationTable(string ID)
-		{
-			tbl.Rows.Clear();
-			foreach (var l in currentLoc.GetLocEntries(ID))
-				tbl.Rows.Add(l.Key, l.Value);
-		}
-
-		private IEnumerable<string> GetAvailableLanguages()
-		{
-			foreach (var lang in LOCFile.ValidLanguages)
-			{
-				if (currentLoc.Languages.Contains(lang)) continue;
-				yield return lang;
-			}
-			yield break;
-		}
-
-		private void addLanguageToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			using (var ms = new MemoryStream())
+        {
+			if (MessageBox.Show("Are you sure?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
 			{
-				new LOCFileWriter(currentLoc, 0).WriteToStream(ms);
-				_arc[FileName] = ms.ToArray();
+				_loc = currentloc;
+				DialogResult = DialogResult.OK;
 			}
-			DialogResult = DialogResult.OK;
+
 		}
 
-        private void locSort_Paint(object sender, PaintEventArgs e)
-        {
 
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			listView1.Items.Clear();
+			Table.Rows.Clear();
+
+			foreach (string locKey in currentloc.LocKeys.Keys)
+			{
+
+				string ID = locKey;
+				string Text = currentloc.LocKeys[locKey][comboBox1.Text];
+				string Label = "";
+				if (languageMap_id.ContainsKey(locKey))
+					Label = languageMap_id[locKey];
+
+                DataRow Row = Table.NewRow();
+				Row["ID"] = ID;
+				Row["Label"] = Label;
+				Row["Text"] = Text;
+
+                Table.Rows.Add(Row);
+
+			}
+			RefreshListView(Table);
         }
 
+		private void listView1_DoubleClick(object sender, EventArgs e)
+		{
+			if (listView1.SelectedItems[0] == null)
+				return;
+
+			LOCEditMessage msg = new LOCEditMessage();
+			msg.ID = listView1.SelectedItems[0].SubItems[0].Text;
+			msg.Label = listView1.SelectedItems[0].SubItems[1].Text;
+			msg.Value = listView1.SelectedItems[0].SubItems[2].Text;
+
+			msg.ShowDialog();
+
+			if (msg.NewValue != msg.Value)
+			{
+				listView1.SelectedItems[0].ForeColor = Color.Red;
+                listView1.SelectedItems[0].SubItems[2].Text = msg.NewValue;
+
+				currentloc.LocKeys[msg.ID][comboBox1.Text] = msg.NewValue;
+            }
+		}
+
+		private void textBox1_TextChanged(object sender, EventArgs e)
+		{
+			if(string.IsNullOrEmpty(textBox1.Text))
+                RefreshListView(Table);
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+			if(e.KeyChar == (char)13)
+			{
+				DataTable dt = SearchInAllColums(Table, textBox1.Text, StringComparison.CurrentCultureIgnoreCase);
+				RefreshListView(dt);
+            }
+        }
+
+		private void RefreshListView(DataTable _table)
+		{
+			listView1.Items.Clear();
+            foreach (DataRow row in _table.Rows)
+            {
+                ListViewItem item = new ListViewItem(row[0].ToString());
+                for (int i = 1; i < _table.Columns.Count; i++)
+                {
+                    item.SubItems.Add(row[i].ToString());
+                }
+                listView1.Items.Add(item);
+            }
+        }
+
+        private DataTable SearchInAllColums(DataTable table, string keyword, StringComparison comparison)
+        {
+            if (keyword.Equals(""))
+            {
+                return table;
+            }
+            DataRow[] filteredRows = table.Rows
+                   .Cast<DataRow>()
+                   .Where(r => r.ItemArray.Any(
+                   c => c.ToString().IndexOf(keyword, comparison) >= 0))
+                   .ToArray();
+
+            if (filteredRows.Length == 0)
+            {
+                DataTable dtTemp = table.Clone();
+                dtTemp.Clear();
+                return dtTemp;
+            }
+            else
+            {
+                return filteredRows.CopyToDataTable();
+            }
+        }
+
+		string GetRandomID() 
+		{
+            Random res = new Random();
+
+            // String of alphabets  
+            string str = "0123456789ABCDEF";
+            int size = 8;
+
+            // Initializing the empty string 
+            string ran = "";
+
+            for (int i = 0; i < size; i++)
+            {
+
+                // Selecting a index randomly 
+                int x = res.Next(str.Length);
+
+                // Appending the character at the  
+                // index to the random string. 
+                ran = ran + str[x];
+            }
+			return ran;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            LOCEditMessage msg = new LOCEditMessage();
+            msg.ID = GetRandomID();
+            msg.Label = "";
+            msg.Value = "";
+
+            msg.ShowDialog();
+
+            if (msg.NewValue != msg.Value)
+            {
+				currentloc.AddLocKey(msg.ID, msg.NewValue);
+				comboBox1.SelectedIndex = 0;
+
+				textBox1.Text = msg.ID;
+            }
+        }
     }
 }

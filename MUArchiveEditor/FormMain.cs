@@ -14,7 +14,11 @@ using MinecraftUArchiveExplorer.Forms.Editor;
 using System.Diagnostics;
 using System.Threading;
 using System.Drawing.Imaging;
-
+using OMI.Workers.Language;
+using OMI.Formats.Languages;
+using MinecraftUArchiveExplorer.Forms.AdditionalPopups;
+using OMI.Formats.Color;
+using OMI.Workers.Color;
 
 namespace MinecraftUArchiveExplorer
 {
@@ -106,6 +110,7 @@ namespace MinecraftUArchiveExplorer
             archiveStructureTreeView.Nodes.Clear();
             foreach (KeyValuePair<string, byte[]> file in arcfile.OrderBy(x => x.Key))
             {
+                Console.WriteLine("never wahen just building eithaer, juast debugginagq");
                 TreeNode node = BuildNodeTreeBySeperator(root, file.Key, '\\');
             }
         }
@@ -265,13 +270,33 @@ namespace MinecraftUArchiveExplorer
 
         private void extractToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string FullPath = archiveStructureTreeView.SelectedNode.FullPath;
-            saveFileDialog.Filter = "File|*" + Path.GetExtension(FullPath);
-            saveFileDialog.FileName = archiveStructureTreeView.SelectedNode.Text;
-            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (archiveStructureTreeView.SelectedNode.ImageIndex == 0)
             {
-                File.WriteAllBytes(saveFileDialog.FileName, Archive[FullPath]);
+                string FullPath = archiveStructureTreeView.SelectedNode.FullPath;
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                if (fbd.ShowDialog() == DialogResult.OK) 
+                {
+                    foreach (KeyValuePair<string, byte[]> pair in Archive) 
+                    {
+                        if (pair.Key.StartsWith(FullPath))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(fbd.SelectedPath + "\\" + pair.Key));
+                            File.WriteAllBytes(fbd.SelectedPath + "\\" + pair.Key, pair.Value);
+                        }
+                    }
+                }
             }
+            else
+            {
+                string FullPath = archiveStructureTreeView.SelectedNode.FullPath;
+                saveFileDialog.Filter = "File|*" + Path.GetExtension(FullPath);
+                saveFileDialog.FileName = archiveStructureTreeView.SelectedNode.Text;
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllBytes(saveFileDialog.FileName, Archive[FullPath]);
+                }
+            }
+            MessageBox.Show("Extracted!");
         }
 
         private void aRCCenterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -285,11 +310,50 @@ namespace MinecraftUArchiveExplorer
             string FullPath = archiveStructureTreeView.SelectedNode.FullPath;
             if (Path.GetExtension(FullPath) == ".loc")
             {
-                LOCEditor LE = new LOCEditor(Archive, FullPath);
-                LE.ShowDialog();
+                LOCFile _loc = new LOCFile();
+                MemoryStream ms = new MemoryStream(Archive[FullPath]);
+                _loc = new LOCFileReader().FromStream(ms);
+
+                LOCEditor LE = new LOCEditor();
+                LE._loc = _loc;
+                LE.currentloc = _loc;
+                if(LE.ShowDialog() == DialogResult.OK)
+                {
+                    MemoryStream ms2 = new MemoryStream();
+                    new LOCFileWriter(LE._loc, 2).WriteToStream(ms2);
+                    Archive[FullPath] = ms2.ToArray();
+                    ms2.Close();
+                    ms2.Dispose();
+                }
+                ms.Close();
+                ms.Dispose();
+            }
+            else if (Path.GetExtension(FullPath) == ".col")
+            {
+                ColorContainer _col = new ColorContainer();
+                MemoryStream ms = new MemoryStream(Archive[FullPath]);
+                _col = new COLFileReader().FromStream(ms);
+
+                COLEditor LE = new COLEditor();
+                LE._col = _col;
+                LE.currentcol = _col;
+                if(LE.ShowDialog() == DialogResult.OK)
+                {
+                    MemoryStream ms2 = new MemoryStream();
+                    new COLFileWriter(_col).WriteToStream(ms2);
+                    Archive[FullPath] = ms2.ToArray();
+                    ms2.Close();
+                    ms2.Dispose();
+                }
+                ms.Close();
+                ms.Dispose();
             }
             else
             {
+                if(Path.GetExtension(FullPath) != ".png" && Path.GetExtension(FullPath) != "")
+                {
+                    MessageBox.Show("No current \'" + Path.GetExtension(FullPath) + "\' editor, extracting file...");
+                }
                 extractToolStripMenuItem_Click(sender, e);
             }
 
@@ -303,6 +367,25 @@ namespace MinecraftUArchiveExplorer
         private void exitToolStripMenuItem_Click(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void cycleSavingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string FullPath = archiveStructureTreeView.SelectedNode.FullPath;
+            if (Path.GetExtension(FullPath) == ".loc")
+            {
+                MemoryStream ms = new MemoryStream(Archive[FullPath]);
+                LOCFile _loc = new LOCFileReader().FromStream(ms);
+                MemoryStream ms2 = new MemoryStream();
+                new LOCFileWriter(_loc, 0).WriteToStream(ms2);
+                Archive[FullPath] = ms2.ToArray();
+            }
+        }
+
+        private void programInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About abt = new About();
+            abt.ShowDialog();
         }
     }
 }
