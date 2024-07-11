@@ -26,7 +26,7 @@ namespace MinecraftUArchiveExplorer
 {
     public partial class FormMain : Form
     {
-        public FormMain()
+        void Init() // Thanks miku for pointing it out!
         {
             InitializeComponent();
 
@@ -45,24 +45,13 @@ namespace MinecraftUArchiveExplorer
             label2.Text = label2.Text.Replace("%s", Application.ProductVersion);
             archiveStructureTreeView.ImageList = imageList;
         }
+        public FormMain()
+        {
+            Init();
+        }
         public FormMain(string FilePath)
         {
-            InitializeComponent();
-
-
-            ImageList imageList = new ImageList();
-            imageList.ColorDepth = ColorDepth.Depth32Bit;
-            imageList.ImageSize = new Size(20, 20);
-
-            imageList.Images.Add(Properties.Resources.ZZFolder);
-            imageList.Images.Add(Properties.Resources.IMAGE_ICON);
-            imageList.Images.Add(Properties.Resources.ZFui);
-            imageList.Images.Add(Properties.Resources.LOC_ICON);
-            imageList.Images.Add(Properties.Resources.ZCol);
-            imageList.Images.Add(Properties.Resources.ZUnknown);
-
-            label2.Text = label2.Text.Replace("%s", Application.ProductVersion);
-            archiveStructureTreeView.ImageList = imageList;
+            Init();
 
             try
             {
