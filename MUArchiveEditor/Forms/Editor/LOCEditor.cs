@@ -233,5 +233,19 @@ namespace MinecraftUArchiveExplorer.Forms.Editor
 				textBox1.Text = msg.ID;
             }
         }
+
+        private void copyEntryIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			Clipboard.SetText(listView1.SelectedItems[0].Text);
+			MessageBox.Show("Copied '" + listView1.SelectedItems[0].Text + "' to the clipboard!");
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+			if (listView1.SelectedItems.Count == 1)
+				copyEntryIDToolStripMenuItem.Enabled = true;
+			else
+                copyEntryIDToolStripMenuItem.Enabled = false;
+        }
     }
 }

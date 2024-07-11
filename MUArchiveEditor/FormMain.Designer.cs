@@ -46,6 +46,8 @@ namespace MinecraftUArchiveExplorer
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aRCCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.archiveStructureTreeView = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,19 +56,19 @@ namespace MinecraftUArchiveExplorer
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cycleSavingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cycleSavingAndExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxWithInterpolationMode1 = new MinecraftUArchiveExplorer.PictureBoxWithInterpolationMode();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBoxWithInterpolationMode1 = new MinecraftUArchiveExplorer.PictureBoxWithInterpolationMode();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.programInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWithInterpolationMode1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -87,6 +89,7 @@ namespace MinecraftUArchiveExplorer
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.extractToolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -96,7 +99,7 @@ namespace MinecraftUArchiveExplorer
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -104,14 +107,14 @@ namespace MinecraftUArchiveExplorer
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -127,9 +130,24 @@ namespace MinecraftUArchiveExplorer
             // aRCCenterToolStripMenuItem
             // 
             this.aRCCenterToolStripMenuItem.Name = "aRCCenterToolStripMenuItem";
-            this.aRCCenterToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.aRCCenterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aRCCenterToolStripMenuItem.Text = "ARC Center";
             this.aRCCenterToolStripMenuItem.Click += new System.EventHandler(this.aRCCenterToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programInformationToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // programInformationToolStripMenuItem
+            // 
+            this.programInformationToolStripMenuItem.Name = "programInformationToolStripMenuItem";
+            this.programInformationToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.programInformationToolStripMenuItem.Text = "Program Information";
+            this.programInformationToolStripMenuItem.Click += new System.EventHandler(this.programInformationToolStripMenuItem_Click);
             // 
             // archiveStructureTreeView
             // 
@@ -151,9 +169,10 @@ namespace MinecraftUArchiveExplorer
             this.removeToolStripMenuItem,
             this.replaceToolStripMenuItem,
             this.renameToolStripMenuItem,
-            this.cycleSavingToolStripMenuItem});
+            this.cycleSavingToolStripMenuItem,
+            this.cycleSavingAndExportToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(157, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(202, 158);
             // 
             // addToolStripMenuItem
             // 
@@ -161,7 +180,7 @@ namespace MinecraftUArchiveExplorer
             this.addToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Insert;
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -169,7 +188,7 @@ namespace MinecraftUArchiveExplorer
             // 
             this.extractToolStripMenuItem.Image = global::MinecraftUArchiveExplorer.Properties.Resources.ExportFile;
             this.extractToolStripMenuItem.Name = "extractToolStripMenuItem";
-            this.extractToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.extractToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.extractToolStripMenuItem.Text = "Extract";
             this.extractToolStripMenuItem.Click += new System.EventHandler(this.extractToolStripMenuItem_Click);
             // 
@@ -179,7 +198,7 @@ namespace MinecraftUArchiveExplorer
             this.removeToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
             this.removeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -189,7 +208,7 @@ namespace MinecraftUArchiveExplorer
             this.replaceToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
             this.replaceToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.replaceToolStripMenuItem.Text = "Replace";
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
@@ -199,7 +218,7 @@ namespace MinecraftUArchiveExplorer
             this.renameToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
             this.renameToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
@@ -207,10 +226,19 @@ namespace MinecraftUArchiveExplorer
             // 
             this.cycleSavingToolStripMenuItem.Image = global::MinecraftUArchiveExplorer.Properties.Resources.Cycle;
             this.cycleSavingToolStripMenuItem.Name = "cycleSavingToolStripMenuItem";
-            this.cycleSavingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.cycleSavingToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.cycleSavingToolStripMenuItem.Text = "Cycle Saving";
             this.cycleSavingToolStripMenuItem.Visible = false;
             this.cycleSavingToolStripMenuItem.Click += new System.EventHandler(this.cycleSavingToolStripMenuItem_Click);
+            // 
+            // cycleSavingAndExportToolStripMenuItem
+            // 
+            this.cycleSavingAndExportToolStripMenuItem.Image = global::MinecraftUArchiveExplorer.Properties.Resources.Cycle;
+            this.cycleSavingAndExportToolStripMenuItem.Name = "cycleSavingAndExportToolStripMenuItem";
+            this.cycleSavingAndExportToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.cycleSavingAndExportToolStripMenuItem.Text = "Cycle Saving and Export";
+            this.cycleSavingAndExportToolStripMenuItem.Visible = false;
+            this.cycleSavingAndExportToolStripMenuItem.Click += new System.EventHandler(this.cycleSavingAndExportToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -227,6 +255,17 @@ namespace MinecraftUArchiveExplorer
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(432, 458);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // pictureBoxWithInterpolationMode1
+            // 
+            this.pictureBoxWithInterpolationMode1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxWithInterpolationMode1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.pictureBoxWithInterpolationMode1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxWithInterpolationMode1.Name = "pictureBoxWithInterpolationMode1";
+            this.pictureBoxWithInterpolationMode1.Size = new System.Drawing.Size(426, 422);
+            this.pictureBoxWithInterpolationMode1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxWithInterpolationMode1.TabIndex = 0;
+            this.pictureBoxWithInterpolationMode1.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
@@ -269,31 +308,13 @@ namespace MinecraftUArchiveExplorer
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // pictureBoxWithInterpolationMode1
+            // extractToolStripMenuItem1
             // 
-            this.pictureBoxWithInterpolationMode1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxWithInterpolationMode1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.pictureBoxWithInterpolationMode1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxWithInterpolationMode1.Name = "pictureBoxWithInterpolationMode1";
-            this.pictureBoxWithInterpolationMode1.Size = new System.Drawing.Size(426, 422);
-            this.pictureBoxWithInterpolationMode1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxWithInterpolationMode1.TabIndex = 0;
-            this.pictureBoxWithInterpolationMode1.TabStop = false;
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.programInformationToolStripMenuItem});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            // 
-            // programInformationToolStripMenuItem
-            // 
-            this.programInformationToolStripMenuItem.Name = "programInformationToolStripMenuItem";
-            this.programInformationToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.programInformationToolStripMenuItem.Text = "Program Information";
-            this.programInformationToolStripMenuItem.Click += new System.EventHandler(this.programInformationToolStripMenuItem_Click);
+            this.extractToolStripMenuItem1.Name = "extractToolStripMenuItem1";
+            this.extractToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.extractToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.extractToolStripMenuItem1.Text = "Extract";
+            this.extractToolStripMenuItem1.Click += new System.EventHandler(this.extractToolStripMenuItem1_Click);
             // 
             // FormMain
             // 
@@ -313,9 +334,9 @@ namespace MinecraftUArchiveExplorer
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWithInterpolationMode1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWithInterpolationMode1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,5 +367,7 @@ namespace MinecraftUArchiveExplorer
         private ToolStripMenuItem cycleSavingToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem programInformationToolStripMenuItem;
+        private ToolStripMenuItem cycleSavingAndExportToolStripMenuItem;
+        private ToolStripMenuItem extractToolStripMenuItem1;
     }
 }

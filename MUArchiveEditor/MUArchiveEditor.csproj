@@ -272,6 +272,12 @@
     <Compile Include="Forms\ArcCenter.Designer.cs">
       <DependentUpon>ArcCenter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Editor\FUIEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor\FUIEditor.Designer.cs">
+      <DependentUpon>FUIEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Editor\LOCEditMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ArcCenter.resx">
       <DependentUpon>ArcCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor\FUIEditor.resx">
+      <DependentUpon>FUIEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editor\LOCEditMessage.resx">
       <DependentUpon>LOCEditMessage.cs</DependentUpon>

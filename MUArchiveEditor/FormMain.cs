@@ -16,6 +16,8 @@ using System.Threading;
 using System.Drawing.Imaging;
 using OMI.Workers.Language;
 using OMI.Formats.Languages;
+using OMI.Workers.FUI;
+using OMI.Formats.FUI;
 using MinecraftUArchiveExplorer.Forms.AdditionalPopups;
 using OMI.Formats.Color;
 using OMI.Workers.Color;
@@ -328,6 +330,26 @@ namespace MinecraftUArchiveExplorer
                 ms.Close();
                 ms.Dispose();
             }
+            /*else if (Path.GetExtension(FullPath) == ".fui")
+            {
+                FourjUserInterface _fui = new FourjUserInterface();
+                MemoryStream ms = new MemoryStream(Archive[FullPath]);
+                _fui = new FourjUIReader().FromStream(ms);
+
+                FUIEditor LE = new FUIEditor();
+                LE._fui = _fui;
+                LE.currentfui = _fui;
+                if(LE.ShowDialog() == DialogResult.OK)
+                {
+                    MemoryStream ms2 = new MemoryStream();
+                    new FourjUIWriter(LE._fui).WriteToStream(ms2);
+                    Archive[FullPath] = ms2.ToArray();
+                    ms2.Close();
+                    ms2.Dispose();
+                }
+                ms.Close();
+                ms.Dispose();
+            }*/
             else if (Path.GetExtension(FullPath) == ".col")
             {
                 ColorContainer _col = new ColorContainer();
@@ -386,6 +408,31 @@ namespace MinecraftUArchiveExplorer
         {
             About abt = new About();
             abt.ShowDialog();
+        }
+
+        private void cycleSavingAndExportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cycleSavingToolStripMenuItem_Click(sender, e);
+            extractToolStripMenuItem_Click(sender, e);
+        }
+
+        private void extractToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (Archive.Count == 0)
+            {
+                openToolStripMenuItem_Click(sender, e);
+            }
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK) 
+            {
+                foreach (KeyValuePair<string, byte[]> file in Archive) 
+                {
+                    if (!Directory.Exists(Path.GetDirectoryName(folderBrowserDialog.SelectedPath + "/" + file.Key)))
+                        Directory.CreateDirectory(Path.GetDirectoryName(folderBrowserDialog.SelectedPath + "/" + file.Key));
+                    File.WriteAllBytes(folderBrowserDialog.SelectedPath + "/" + file.Key, file.Value);
+                }
+                MessageBox.Show("Extracted to: " + folderBrowserDialog.SelectedPath);
+            }
         }
     }
 }
