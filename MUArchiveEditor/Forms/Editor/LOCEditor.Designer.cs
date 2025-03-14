@@ -38,6 +38,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportLOCEntriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overwriteLOCLabellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -67,7 +69,9 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.exportLOCEntriesToolStripMenuItem,
+            this.overwriteLOCLabellingToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -77,9 +81,24 @@
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // exportLOCEntriesToolStripMenuItem
+            // 
+            this.exportLOCEntriesToolStripMenuItem.Name = "exportLOCEntriesToolStripMenuItem";
+            this.exportLOCEntriesToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.exportLOCEntriesToolStripMenuItem.Text = "Export All LOC Entries";
+            this.exportLOCEntriesToolStripMenuItem.Click += new System.EventHandler(this.exportLOCEntriesToolStripMenuItem_Click);
+            // 
+            // overwriteLOCLabellingToolStripMenuItem
+            // 
+            this.overwriteLOCLabellingToolStripMenuItem.Name = "overwriteLOCLabellingToolStripMenuItem";
+            this.overwriteLOCLabellingToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.overwriteLOCLabellingToolStripMenuItem.Text = "Overwrite LOC Labelling";
+            this.overwriteLOCLabellingToolStripMenuItem.Visible = false;
+            this.overwriteLOCLabellingToolStripMenuItem.Click += new System.EventHandler(this.overwriteLOCLabellingToolStripMenuItem_Click);
             // 
             // listView1
             // 
@@ -149,7 +168,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.86956F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.13043F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
             this.tableLayoutPanel2.Controls.Add(this.textBox1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.comboBox1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button1, 2, 0);
@@ -164,9 +183,9 @@
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(237, 3);
+            this.textBox1.Location = new System.Drawing.Point(236, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(413, 20);
+            this.textBox1.Size = new System.Drawing.Size(410, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -177,13 +196,13 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(3, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(228, 21);
+            this.comboBox1.Size = new System.Drawing.Size(227, 21);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(656, 3);
+            this.button1.Location = new System.Drawing.Point(652, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 23);
             this.button1.TabIndex = 3;
@@ -230,5 +249,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyEntryIDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportLOCEntriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem overwriteLOCLabellingToolStripMenuItem;
     }
 }

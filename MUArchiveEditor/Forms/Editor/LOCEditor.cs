@@ -11,6 +11,7 @@ using OMI.Formats.Pck;
 using OMI.Formats.Archive;
 using Newtonsoft.Json;
 using System.Drawing;
+using System.Collections;
 
 namespace MinecraftUArchiveExplorer.Forms.Editor
 {
@@ -246,6 +247,60 @@ namespace MinecraftUArchiveExplorer.Forms.Editor
 				copyEntryIDToolStripMenuItem.Enabled = true;
 			else
                 copyEntryIDToolStripMenuItem.Enabled = false;
+        }
+
+        private void exportLOCEntriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			if (fbd.ShowDialog() != DialogResult.OK) return;
+
+            Dictionary<string, string> Language = new Dictionary<string, string>();
+			string outputJSON = "";
+
+            foreach (string Lang in comboBox1.Items)
+			{
+				Language.Clear();
+				outputJSON = "";
+                foreach (string locKey in currentloc.LocKeys.Keys)
+                {
+
+                    string ID = locKey;
+                    string Text = currentloc.LocKeys[locKey][Lang];
+					Language.Add(ID, Text);
+                }
+				Directory.CreateDirectory(Path.GetDirectoryName(fbd.SelectedPath + "/" + Lang + ".json"));
+				outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(Language, Formatting.Indented);
+				File.WriteAllText(fbd.SelectedPath + "/" + Lang + ".json", outputJSON);
+            }
+			MessageBox.Show("Exported " + comboBox1.Items.Count + " Languages!");
+
+        }
+
+        private void overwriteLOCLabellingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Filter = "Console Java Maps|*.json";
+			if(ofd.ShowDialog() == DialogResult.OK)
+			{
+				string RawJSON = File.ReadAllText(ofd.FileName);
+                Dictionary<string, string> _matches = JsonConvert.DeserializeObject<Dictionary<string, string>>(RawJSON);
+				
+				foreach(ListViewItem LItem in listView1.Items)
+				{
+					LItem.SubItems[1].Text = "";
+					if(_matches.ContainsValue(LItem.Text))
+						foreach(KeyValuePair<string, string> kvp in _matches)
+						{
+							if (LItem.Text == kvp.Value)
+						    {
+								LItem.SubItems[1].Text = kvp.Key;
+								//_matches.Remove(kvp.Key);
+							}
+						}
+				}
+				MessageBox.Show("Done!");
+			}
         }
     }
 }
