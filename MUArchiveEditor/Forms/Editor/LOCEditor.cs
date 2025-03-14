@@ -249,33 +249,49 @@ namespace MinecraftUArchiveExplorer.Forms.Editor
                 copyEntryIDToolStripMenuItem.Enabled = false;
         }
 
-        private void exportLOCEntriesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+		public void ExtractLangs(bool asJson = true)
+		{
 
-			FolderBrowserDialog fbd = new FolderBrowserDialog();
-			if (fbd.ShowDialog() != DialogResult.OK) return;
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() != DialogResult.OK) return;
+			string folderpath = fbd.SelectedPath;
 
             Dictionary<string, string> Language = new Dictionary<string, string>();
-			string outputJSON = "";
+            List<string> LanguageList = new List<string>();
+            string outputJSON = "";
 
             foreach (string Lang in comboBox1.Items)
-			{
-				Language.Clear();
-				outputJSON = "";
+            {
+                Language.Clear();
+				LanguageList.Clear();
+                outputJSON = "";
                 foreach (string locKey in currentloc.LocKeys.Keys)
                 {
 
                     string ID = locKey;
                     string Text = currentloc.LocKeys[locKey][Lang];
-					Language.Add(ID, Text);
+                    Language.Add(ID, Text);
+					LanguageList.Add(Text);
                 }
-				Directory.CreateDirectory(Path.GetDirectoryName(fbd.SelectedPath + "/" + Lang + ".json"));
-				outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(Language, Formatting.Indented);
-				File.WriteAllText(fbd.SelectedPath + "/" + Lang + ".json", outputJSON);
+				if (asJson)
+				{
+					Directory.CreateDirectory(Path.GetDirectoryName(folderpath + "/" + Lang + ".json"));
+					outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(Language, Formatting.Indented);
+					File.WriteAllText(folderpath + "/" + Lang + ".json", outputJSON);
+				}
+				else
+				{
+					foreach(string entry in LanguageList)
+					{
+						File.AppendAllText(folderpath + "/" + Lang + ".txt", entry + "\r\n");
+					}
+				}
             }
-			MessageBox.Show("Exported " + comboBox1.Items.Count + " Languages!");
-
+            MessageBox.Show("Exported " + comboBox1.Items.Count + " Languages!");
         }
+
+        private void exportLOCEntriesToolStripMenuItem_Click(object sender, EventArgs e) { }
 
         private void overwriteLOCLabellingToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -301,6 +317,16 @@ namespace MinecraftUArchiveExplorer.Forms.Editor
 				}
 				MessageBox.Show("Done!");
 			}
+        }
+
+        private void asJSONObjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtractLangs(true);
+        }
+
+        private void asRAWStringsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtractLangs(false);
         }
     }
 }

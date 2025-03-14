@@ -51,6 +51,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.asJSONObjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asRAWStringsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -87,6 +89,9 @@
             // 
             // exportLOCEntriesToolStripMenuItem
             // 
+            this.exportLOCEntriesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asJSONObjectsToolStripMenuItem,
+            this.asRAWStringsToolStripMenuItem});
             this.exportLOCEntriesToolStripMenuItem.Name = "exportLOCEntriesToolStripMenuItem";
             this.exportLOCEntriesToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.exportLOCEntriesToolStripMenuItem.Text = "Export All LOC Entries";
@@ -210,6 +215,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // asJSONObjectsToolStripMenuItem
+            // 
+            this.asJSONObjectsToolStripMenuItem.Name = "asJSONObjectsToolStripMenuItem";
+            this.asJSONObjectsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asJSONObjectsToolStripMenuItem.Text = "As JSON Objects";
+            this.asJSONObjectsToolStripMenuItem.Click += new System.EventHandler(this.asJSONObjectsToolStripMenuItem_Click);
+            // 
+            // asRAWStringsToolStripMenuItem
+            // 
+            this.asRAWStringsToolStripMenuItem.Name = "asRAWStringsToolStripMenuItem";
+            this.asRAWStringsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asRAWStringsToolStripMenuItem.Text = "As RAW Strings";
+            this.asRAWStringsToolStripMenuItem.Click += new System.EventHandler(this.asRAWStringsToolStripMenuItem_Click);
+            // 
             // LOCEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,5 +270,7 @@
         private System.Windows.Forms.ToolStripMenuItem copyEntryIDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportLOCEntriesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem overwriteLOCLabellingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asJSONObjectsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asRAWStringsToolStripMenuItem;
     }
 }
