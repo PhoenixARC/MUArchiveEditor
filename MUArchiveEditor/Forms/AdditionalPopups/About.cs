@@ -27,7 +27,7 @@ namespace MinecraftUArchiveExplorer.Forms.AdditionalPopups
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/PhoenixARC/-OMI-Filetype-Library");
+            Process.Start("https://github.com/LCERD/OMI-Filetype-Library");
         }
     }
 }
